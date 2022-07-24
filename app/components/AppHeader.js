@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AppColors from '../themes/AppColors';
 import defaultFonts from '../themes/DefaultFonts';
+import PostifyLogo from '../assets/images/Postify.svg';
 import { BACK_HEADER_SCREENS } from '../utils/constants';
 
 const AppHeader = ({ title, PostTitle, style }) => {
@@ -25,7 +26,9 @@ const AppHeader = ({ title, PostTitle, style }) => {
         </View>
       ) : (
         <View style={styles.container}>
-          <Text style={styles.title}>{title}</Text>
+          <View>
+            <PostifyLogo width={100} />
+          </View>
           <MCIcon
             name="account-search"
             color={AppColors.text}
