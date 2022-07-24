@@ -12,7 +12,8 @@ const PostCard = ({
   postTitle = '',
   postAuthorID,
   postBody = '',
-  onSelectPost,
+  onPressPost,
+  onPressProfile,
 }) => {
   const [postAuthor, setPostAuthor] = useState();
 
@@ -36,7 +37,7 @@ const PostCard = ({
       <Card
         theme={{ roundness: 10 }}
         style={styles.cardContainer}
-        onPress={() => onSelectPost(postID, postAuthorID)}>
+        onPress={() => onPressPost(postID, postAuthorID)}>
         <View style={styles.titleContainer}>
           <Text style={styles.postTitleText}>{postTitle}</Text>
         </View>
@@ -52,7 +53,10 @@ const PostCard = ({
           </View>
         </View>
         <View style={styles.actionContainer}>
-          <Avatar postAuthor={postAuthor} />
+          <Avatar
+            name={postAuthor}
+            onPress={() => onPressProfile(postAuthorID)}
+          />
           <Card.Actions style={styles.action}>
             <Button theme={{ roundness: 5 }} mode="outlined" uppercase={false}>
               Learn more

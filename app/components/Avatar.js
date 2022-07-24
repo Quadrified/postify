@@ -4,21 +4,21 @@ import UserAvatar from 'react-native-user-avatar';
 import AppColors from '../themes/AppColors';
 import defaultFonts from '../themes/DefaultFonts';
 
-const Avatar = ({ postAuthor = 'Comment', size, avatarStyle, titleStyle }) => {
+const Avatar = ({ name = '', size, avatarStyle, titleStyle, onPress }) => {
   return (
     <TouchableOpacity
       style={styles.authorNameContainer}
       activeOpacity={0.75}
-      onPress={() => console.log('>>>Pressed Avatar<<<')}>
+      onPress={onPress}>
       <UserAvatar
         size={size || 30}
         borderRadius={100}
-        name={postAuthor}
+        name={name}
         bgColor={AppColors.primary}
         style={[styles.container, avatarStyle]}
       />
-      <Text numberOfLines={1} style={[styles.postAuthorText, titleStyle]}>
-        {postAuthor}
+      <Text numberOfLines={2} style={[styles.postAuthorText, titleStyle]}>
+        {name}
       </Text>
     </TouchableOpacity>
   );

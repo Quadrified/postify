@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     color: AppColors.text,
   },
   postBodyContainer: {
-    paddingHorizontal: 7,
-    marginVertical: 10,
+    paddingHorizontal: 10,
+    marginVertical: 15,
   },
   postTitle: {
     fontFamily: DefaultFonts.ExtraBold,
@@ -61,9 +61,9 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
   },
   commentEmail: {
-    fontFamily: DefaultFonts.Medium,
+    fontFamily: DefaultFonts.MediumItalic,
     fontSize: 12,
-    color: AppColors.text,
+    color: AppColors.primary,
     marginVertical: 10,
   },
 });

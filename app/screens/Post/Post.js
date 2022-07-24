@@ -12,16 +12,16 @@ import styles from './styles';
 
 const Post = ({ navigation, route }) => {
   const { postID, postAuthorID } = route.params;
-  console.log('>>>postID, postAuthorID<<<', postID, postAuthorID);
 
   const postData = useSelector(state => getHomePostData(state));
   const authorData = useSelector(state => getCompleteAuthorData(state));
   const authorName = useSelector(state =>
     getFilteredAuthorName(state, postAuthorID),
   );
-  console.log('>>>postData<<<', postData);
-  console.log('>>>authorData<<<', authorData);
-  console.log('>>>authorName<<<', authorName);
+
+  const onPressProfile = authorID => {
+    navigation.navigate('Profile', { authorID });
+  };
 
   return (
     <>
@@ -38,9 +38,10 @@ const Post = ({ navigation, route }) => {
                 />
                 <View style={styles.postBodyContainer}>
                   <Avatar
-                    postAuthor={authorName}
+                    name={authorName}
                     size={30}
                     titleStyle={styles.titleStyle}
+                    onPress={() => onPressProfile(authorData?.id)}
                   />
                   <Text style={styles.postTitle}>{filteredPostData.title}</Text>
                   <Text style={styles.postBody}>{filteredPostData.body}</Text>
@@ -52,7 +53,7 @@ const Post = ({ navigation, route }) => {
                       <View style={styles.commentContainer} key={id}>
                         <Avatar
                           size={30}
-                          postAuthor={name}
+                          name={name}
                           titleStyle={styles.commentTitleStyle}
                         />
                         <Text style={styles.commentBody}>{body}</Text>

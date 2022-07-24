@@ -9,12 +9,13 @@ export const getHomePostData = state => {
 
 export const getCompleteAuthorData = state => {
   // const randomTimeStamp = generateRandomTimeStamp();
-  return state.HomePostsReducer?.userData;
+  return state.HomePostsReducer?.userData[0];
 };
 
 export const getFilteredAuthorName = (state, authorID) => {
-  const authorName = state.HomePostsReducer?.userData.filter(
+  console.log('>>>userData<<<', state.HomePostsReducer?.userData, authorID);
+  const authorName = state.HomePostsReducer?.userData?.filter(
     user => user.id === authorID,
-  )[0].username;
+  )[0]?.username;
   return authorName;
 };

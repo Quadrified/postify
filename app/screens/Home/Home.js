@@ -22,6 +22,8 @@ const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const postData = useSelector(state => getHomePostData(state));
 
+  // console.log('>>>postData<<<', postData);
+
   const refreshProps = Platform.select({
     android: {
       progressBackgroundColor: AppColors.white,
@@ -32,7 +34,7 @@ const Home = ({ navigation }) => {
   });
 
   const onRefresh = useCallback(() => {
-    const randomNumberOfPostLimit = Math.floor(Math.random() * 15);
+    const randomNumberOfPostLimit = Math.floor(Math.random() * 35);
     setRefreshing(true);
     setIsLoading(true);
     dispatch(getPostData(randomNumberOfPostLimit))
@@ -50,7 +52,7 @@ const Home = ({ navigation }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getPostData(10))
+    dispatch(getPostData(50))
       .then(data => {
         if (data.ok) {
           setIsLoading(false);
@@ -62,8 +64,13 @@ const Home = ({ navigation }) => {
       });
   }, [dispatch]);
 
-  const onSelectPost = (postID, postAuthorID) => {
+  const onPressPost = (postID, postAuthorID) => {
+    console.log('>>>postID, postAuthorID<<<', postID, postAuthorID);
     navigation.navigate('Post', { postID, postAuthorID });
+  };
+
+  const onPressProfile = authorID => {
+    navigation.navigate('Profile', { authorID });
   };
 
   return (
@@ -93,7 +100,8 @@ const Home = ({ navigation }) => {
                   postTitle={title}
                   postAuthorID={userId}
                   postBody={body}
-                  onSelectPost={onSelectPost}
+                  onPressPost={onPressPost}
+                  onPressProfile={onPressProfile}
                 />
               )}
             />
