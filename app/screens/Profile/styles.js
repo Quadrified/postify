@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: AppColors.primary,
     paddingLeft: 35,
-    paddingTop: 5,
   },
   locationContainer: {
     flexDirection: 'row',
@@ -60,6 +59,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: AppColors.primary,
     left: 10,
+  },
+  interactiveItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: 5,
   },
 });
 

@@ -24,6 +24,7 @@
     "react-native": "0.67.4",
     "react-native-flipper": "^0.155.0",
     "react-native-gesture-handler": "^2.5.0",
+    "react-native-linear-gradient": "^2.6.2",
     "react-native-modal": "^13.0.1",
     "react-native-offline": "^6.0.0",
     "react-native-paper": "^4.12.3",

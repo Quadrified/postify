@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AppHeader from '../../components/AppHeader';
 import Avatar from '../../components/Avatar';
+import { getUserData } from '../Home/redux/actions';
 import {
   getCompleteAuthorData,
   getFilteredAuthorName,
@@ -13,11 +14,24 @@ import styles from './styles';
 const Post = ({ navigation, route }) => {
   const { postID, postAuthorID } = route.params;
 
+  const dispatch = useDispatch();
+
   const postData = useSelector(state => getHomePostData(state));
   const authorData = useSelector(state => getCompleteAuthorData(state));
   const authorName = useSelector(state =>
     getFilteredAuthorName(state, postAuthorID),
   );
+
+  useEffect(() => {
+    dispatch(getUserData(postAuthorID))
+      .then(data => {
+        if (data.ok) {
+        }
+      })
+      .catch(error => {
+        console.log('Caught in home -> fetchHome', error);
+      });
+  }, [dispatch, postAuthorID]);
 
   const onPressProfile = authorID => {
     navigation.navigate('Profile', { authorID });

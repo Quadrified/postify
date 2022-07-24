@@ -17,24 +17,15 @@ import InfoBlock from './components/InfoBlock';
 import styles from './styles';
 
 const Profile = ({ route }) => {
-  const [isLoading, setIsLoading] = useState(false);
-
   const { authorID } = route.params;
   const dispatch = useDispatch();
 
   const authorData = useSelector(state => getCompleteAuthorData(state));
 
   useEffect(() => {
-    dispatch(getUserData(authorID))
-      .then(data => {
-        if (data.ok) {
-          setIsLoading(false);
-        }
-      })
-      .catch(error => {
-        console.log('Caught in home -> fetchHome', error);
-        setIsLoading(false);
-      });
+    dispatch(getUserData(authorID)).catch(error => {
+      console.log('Caught in Profile -> getUserData', error);
+    });
   }, [authorID, dispatch]);
 
   return (
@@ -55,18 +46,21 @@ const Profile = ({ route }) => {
               icon="people"
             />
             <InfoBlock
+              interactive
               title="Email"
               subtitle={authorData.email}
               icon="email"
               onPress={() => openEmailClient(authorData.email)}
             />
             <InfoBlock
+              interactive
               title="Phone"
               subtitle={authorData.phone}
               icon="call"
               onPress={() => openDialer(authorData.phone)}
             />
             <InfoBlock
+              interactive
               title="Website"
               subtitle={authorData.website}
               icon="laptop-chromebook"

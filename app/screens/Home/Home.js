@@ -65,7 +65,6 @@ const Home = ({ navigation }) => {
   }, [dispatch]);
 
   const onPressPost = (postID, postAuthorID) => {
-    console.log('>>>postID, postAuthorID<<<', postID, postAuthorID);
     navigation.navigate('Post', { postID, postAuthorID });
   };
 

@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
   },
   postCoverContainer: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    marginLeft: 10,
   },
   postBodyTextContainer: {
     paddingVertical: 10,
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
     fontFamily: DefaultFonts.Medium,
     fontSize: 13,
     color: AppColors.text,
+    textTransform: 'capitalize',
   },
   postCoverImage: {
     width: '100%',

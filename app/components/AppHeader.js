@@ -3,6 +3,7 @@ import { View, StyleSheet, Platform, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AppColors from '../themes/AppColors';
 import defaultFonts from '../themes/DefaultFonts';
 import { BACK_HEADER_SCREENS } from '../utils/constants';
@@ -17,19 +18,18 @@ const AppHeader = ({ title, PostTitle, style }) => {
           <Icon
             name="arrow-back"
             color={AppColors.text}
-            size={24}
+            size={26}
             style={styles.mainIcon}
             onPress={() => navigation.goBack()}
           />
-          {/* <Text style={styles.title}>{title}</Text> */}
         </View>
       ) : (
         <View style={styles.container}>
           <Text style={styles.title}>{title}</Text>
-          <Icon
-            name="search"
+          <MCIcon
+            name="account-search"
             color={AppColors.text}
-            size={24}
+            size={26}
             style={styles.mainIcon}
             onPress={() => navigation.navigate('Search')}
           />

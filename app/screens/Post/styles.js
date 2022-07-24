@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     color: AppColors.text,
     paddingVertical: 10,
     marginVertical: 10,
+    textTransform: 'capitalize',
   },
   postBody: {
     fontFamily: DefaultFonts.Medium,
