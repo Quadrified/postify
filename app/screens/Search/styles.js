@@ -11,8 +11,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   searchResultContainer: {
-    borderWidth: 1,
-    borderColor: 'red',
     flex: 1,
     marginHorizontal: 5,
   },

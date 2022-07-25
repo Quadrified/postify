@@ -29,10 +29,10 @@ const AppHeader = ({ title }) => {
           <View>
             <PostifyLogo width={100} />
           </View>
-          <MCIcon
-            name="account-search"
+          <Icon
+            name="search"
             color={AppColors.text}
-            size={26}
+            size={24}
             style={styles.mainIcon}
             onPress={() => navigation.navigate('Search')}
           />
@@ -52,6 +52,10 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: AppColors.background,
     elevation: 1,
+  },
+  mainIcon: {
+    paddingVertical: 10,
+    alignSelf: 'center',
   },
   backHeaderContainer: {
     flexDirection: 'row',

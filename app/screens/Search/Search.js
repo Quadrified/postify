@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, FlatList, Keyboard } from 'react-native';
 import _ from 'lodash';
 import { Searchbar, ActivityIndicator } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -20,44 +20,40 @@ const Search = ({ navigation, route }) => {
 
   const searchData = useSelector(state => getSearchData(state));
 
-  console.log('>>>searchData<<<', searchData);
-
   useEffect(() => {
-    dispatch(clearSearchResult()).catch(error => {
-      setIsLoading(false);
-      console.error('error in searchUser', error);
-    });
+    dispatch(clearSearchResult());
     searchRef.current.focus();
   }, [dispatch]);
 
   const searchUser = query => {
     if (!query.length) {
-      dispatch(clearSearchResult())
-        .then(() => {
-          setIsLoading(false);
-        })
-        .catch(error => {
-          setIsLoading(false);
-          console.error('error in searchUser', error);
-        });
+      setIsLoading(false);
+      dispatch(clearSearchResult());
       return;
     }
     dispatch(fetchSearchData(query))
-      .then(data => {
-        console.log('data', data);
-        setIsLoading(false);
+      .then(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 300);
       })
       .catch(error => {
         console.error('error in onChangeSearch', error);
         setIsLoading(false);
       });
   };
+
   const debouncedSearch = _.debounce(searchUser, 3000);
 
   const onChangeSearch = query => {
     setIsLoading(true);
     setSearchQuery(query);
     debouncedSearch(query);
+  };
+
+  const onPressResult = userID => {
+    console.log('>>>userID from search<<<', userID);
+    navigation.navigate('Profile', { authorID: userID });
   };
 
   return (
@@ -78,14 +74,31 @@ const Search = ({ navigation, route }) => {
             )}
           />
         </View>
-        <View style={styles.searchResultContainer}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+        <View
+          style={styles.searchResultContainer}
+          onTouchStart={() => Keyboard.dismiss()}>
+          <View>
             {isLoading ? (
               <ActivityIndicator animating size={40} style={styles.loader} />
             ) : (
-              <SearchResultCard />
+              <FlatList
+                data={searchData}
+                keyExtractor={data => data.id}
+                renderItem={({
+                  item: { id, name, username, email, phone },
+                }) => (
+                  <SearchResultCard
+                    postAuthorID={id}
+                    fullName={name}
+                    userName={username}
+                    email={email}
+                    phoneNumber={phone}
+                    onPressResult={onPressResult}
+                  />
+                )}
+              />
             )}
-          </ScrollView>
+          </View>
         </View>
       </View>
     </>
