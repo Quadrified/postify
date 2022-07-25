@@ -1,27 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, StatusBar } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, ScrollView } from 'react-native';
+import { Searchbar } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import AppHeader from '../../components/AppHeader';
+import AppColors from '../../themes/AppColors';
+import styles from './styles';
 
-const Search = props => {
+const Search = ({ navigation, route }) => {
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  const searchRef = useRef(null);
+
+  useEffect(() => {
+    searchRef.current.focus();
+  }, []);
+
+  const onChangeSearch = query => {
+    console.log('>>>query<<<', query);
+    setSearchQuery(query);
+  };
+
   return (
     <>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor={styles.container?.backgroundColor}
-      />
+      <AppHeader title="Search" />
       <View style={styles.container}>
-        <Text>Search</Text>
+        <View style={styles.searchContainer}>
+          <Searchbar
+            ref={searchRef}
+            icon="account-search"
+            placeholder="Search for a user"
+            onChangeText={onChangeSearch}
+            value={searchQuery}
+            theme={{ roundness: 10 }}
+            clearButtonMode="while-editing"
+            clearIcon={() => (
+              <Icon name="clear" size={18} color={AppColors.text} />
+            )}
+          />
+        </View>
+        <View style={styles.searchResultContainer}>
+          <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
+        </View>
       </View>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#F5F5F5',
-  },
-});
 
 export default Search;

@@ -1,0 +1,98 @@
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
+import { Card, Button } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
+import { getUserData } from '../redux/actions';
+import Avatar from '../../../components/Avatar';
+import AppColors from '../../../themes/AppColors';
+import DefaultFonts from '../../../themes/DefaultFonts';
+
+const SearchResultCard = ({
+  postID,
+  postTitle = '',
+  postAuthorID,
+  postBody = '',
+  onPressPost,
+  onPressProfile,
+}) => {
+  const [postAuthor, setPostAuthor] = useState('Omer');
+
+  return (
+    <>
+      <Card
+        theme={{ roundness: 10 }}
+        style={styles.cardContainer}
+        onPress={() => onPressPost(postID, postAuthorID)}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.postTitleText}>{postTitle}</Text>
+        </View>
+        <View style={styles.actionContainer}>
+          <Avatar
+            name={postAuthor}
+            onPress={() => onPressProfile(postAuthorID)}
+          />
+          <Card.Actions style={styles.action}>
+            <Button theme={{ roundness: 5 }} mode="outlined" uppercase={false}>
+              Learn more
+            </Button>
+          </Card.Actions>
+        </View>
+      </Card>
+    </>
+  );
+};
+
+const styles = StyleSheet.create({
+  cardContainer: {
+    marginVertical: 5,
+    padding: 5,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    padding: 10,
+  },
+  postTitleText: {
+    fontFamily: DefaultFonts.Bold,
+    fontSize: 18,
+    color: AppColors.text,
+    textTransform: 'capitalize',
+  },
+  postCoverContainer: {
+    alignItems: 'flex-start',
+    marginLeft: 10,
+  },
+  postBodyTextContainer: {
+    paddingVertical: 10,
+  },
+  postBodyText: {
+    fontFamily: DefaultFonts.Medium,
+    fontSize: 13,
+    color: AppColors.text,
+    textTransform: 'capitalize',
+  },
+  postCoverImage: {
+    width: '100%',
+    height: 120,
+    borderRadius: 5,
+  },
+  authorNameContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '50%',
+  },
+  postAuthorText: {
+    fontFamily: DefaultFonts.Medium,
+    fontSize: 13,
+    color: AppColors.text,
+    left: 5,
+    textTransform: 'capitalize',
+  },
+  actionContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 5,
+  },
+});
+
+export default SearchResultCard;
