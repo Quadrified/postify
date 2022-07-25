@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Platform, Text } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -9,7 +9,7 @@ import defaultFonts from '../themes/DefaultFonts';
 import PostifyLogo from '../assets/images/Postify.svg';
 import { BACK_HEADER_SCREENS } from '../utils/constants';
 
-const AppHeader = ({ title, PostTitle, style }) => {
+const AppHeader = ({ title }) => {
   const navigation = useNavigation();
 
   return (
@@ -71,22 +71,6 @@ const styles = StyleSheet.create({
         paddingTop: 5,
       },
     }),
-  },
-  backIcon: {
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-  },
-  headerRightIcon: {
-    position: 'absolute',
-    right: wp('2%'),
-    paddingHorizontal: 10,
-  },
-  headerRightIconContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  scan: {
-    paddingLeft: 3,
   },
 });
 
