@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, FlatList, Keyboard } from 'react-native';
 import _ from 'lodash';
 import { Searchbar, ActivityIndicator } from 'react-native-paper';
-import Toast from 'react-native-simple-toast';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import AppColors from '../../themes/AppColors';
@@ -33,15 +32,9 @@ const Search = ({ navigation }) => {
       return;
     }
     dispatch(fetchSearchData(query))
-      .then(response => {
-        if (response?.data?.length === 0) {
-          Keyboard.dismiss();
-          Toast.show(
-            'No results found. Please try a different search.',
-            Toast.LONG,
-          );
-        }
+      .then(() => {
         setTimeout(() => {
+          Keyboard.dismiss();
           setIsLoading(false);
         }, 300);
       })

@@ -1,7 +1,13 @@
 # OSX
 #
 .DS_Store
-
+ 
+# Built application files
+*.apk
+*.aar
+*.ap_
+*.aab
+ 
 # Xcode
 #
 build/
@@ -20,7 +26,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-
+ 
 # Android/IntelliJ
 #
 build/
@@ -28,33 +34,35 @@ build/
 .gradle
 local.properties
 *.iml
-*.hprof
-
+java_pid*
+android/app/release/app-release.apk
+ 
+# RN bundle for Android
+android/app/src/main/assets/index.android.bundle
+ 
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
-
+ 
 # BUCK
 buck-out/
 \.buckd/
-*.keystore
-!debug.keystore
-
+ 
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
 # screenshots whenever they are needed.
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
-
+ 
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-
+ 
 # Bundle artifact
 *.jsbundle
-
+ 
 # CocoaPods
 /ios/Pods/
