@@ -6,18 +6,25 @@
 
 ## Preview
 
-***
+You can install an APK for the app using the "postify-release.apk" file located in the ```App Previews``` folder
+OR
+Download the APK from [this link](https://drive.google.com/file/d/1WVhH8bCisgsR37QJnn7oLzA7_wulJ6pC/view?usp=sharing)
+
+The video demonstration of the app can be found at [this link](https://drive.google.com/file/d/1WRWsA9l3fG7EZoOZkICeEQbkECOtAF0b/view?usp=sharing)
+
+---
 ## Screenshots
 <p align="center">
-  <img src="./src/assets/screenshots/Splash.jpeg" width="200">
-  <img src="./src/assets/screenshots/Home.jpeg" width="200">
-  <img src="./src/assets/screenshots/Post.jpeg" width="200">
-  <img src="./src/assets/screenshots/Post-Comments.jpeg" width="200">
-  <img src="./src/assets/screenshots/Search-Start.jpeg" width="200">
-  <img src="./src/assets/screenshots/Search-Results.jpeg" width="200">
-  <img src="./src/assets/screenshots/Profile.jpeg" width="200">
+  <img src="./src/assets/screenshots/Splash.jpeg" width="200" />
+  <img src="./src/assets/screenshots/Home.jpeg" width="200" />
+  <img src="./src/assets/screenshots/Post.jpeg" width="200" />
+  <img src="./src/assets/screenshots/Post-Comments.jpeg" width="200" />
+  <img src="./src/assets/screenshots/Search-Start.jpeg" width="200" />
+  <img src="./src/assets/screenshots/Search-Results.jpeg" width="200" />
+  <img src="./src/assets/screenshots/Profile.jpeg" width="200" />
 </p>
-*** 
+
+---
 
 ## About
 Postify is a React Native project created usin JSONPlaceholder, a very popular service that provides useful fake API for testing and prototyping.
@@ -92,6 +99,7 @@ The app is created with React Native version 0.67.4 and utilizes 3rd party libra
       - Phone number of the user
   - Tapping on each card navigates to the Profile screen for that searched user and gives all the details for the user
  
+---
 ## Notes
 - The latest version of React Native (version 0.69.+) was not used for this project because a lot of major 3rd party libraries used in React Native development are still in process of migrating the libraries to the latest version due to React Native's new Architecture introduced recently
 - I created the App logo and screenshots using ```Figma```, a design tool for designing and prototyping.
