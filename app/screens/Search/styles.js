@@ -16,6 +16,10 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 5,
   },
+  loader: {
+    height: '100%',
+    alignItems: 'center',
+  },
 });
 
 export default styles;

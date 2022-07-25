@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Card, Button } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
-import { getUserData } from '../redux/actions';
 import Avatar from '../../../components/Avatar';
 import AppColors from '../../../themes/AppColors';
 import DefaultFonts from '../../../themes/DefaultFonts';
 
-const SearchResultCard = ({
-  postID,
-  postTitle = '',
-  postAuthorID,
-  postBody = '',
-  onPressPost,
-  onPressProfile,
-}) => {
+const SearchResultCard = ({ postAuthorID, onPressResult }) => {
   const [postAuthor, setPostAuthor] = useState('Omer');
 
   return (
@@ -22,20 +13,14 @@ const SearchResultCard = ({
       <Card
         theme={{ roundness: 10 }}
         style={styles.cardContainer}
-        onPress={() => onPressPost(postID, postAuthorID)}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.postTitleText}>{postTitle}</Text>
-        </View>
+        onPress={() => onPressResult(postAuthorID)}>
         <View style={styles.actionContainer}>
           <Avatar
+            size={50}
             name={postAuthor}
-            onPress={() => onPressProfile(postAuthorID)}
+            onPress={() => onPressResult(postAuthorID)}
+            avatarStyle={styles.profilePicture}
           />
-          <Card.Actions style={styles.action}>
-            <Button theme={{ roundness: 5 }} mode="outlined" uppercase={false}>
-              Learn more
-            </Button>
-          </Card.Actions>
         </View>
       </Card>
     </>
@@ -92,6 +77,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 5,
+  },
+  profilePicture: {
+    padding: 10,
+    width: 50,
+    height: 50,
   },
 });
 

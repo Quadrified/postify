@@ -3,11 +3,15 @@ import {
   FETCH_POSTS_ERROR,
   FETCH_USER_DATA,
   FETCH_USER_DATA_ERROR,
+  FETCH_SEARCH_RESULT,
+  FETCH_SEARCH_RESULT_ERROR,
+  CLEAR_SEARCH_RESULT,
 } from './types';
 
 const initialState = {
   postData: [],
   userData: [],
+  searchData: [],
   error: null,
 };
 
@@ -35,6 +39,24 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    }
+    case FETCH_SEARCH_RESULT: {
+      return {
+        ...state,
+        searchData: action.payload,
+      };
+    }
+    case FETCH_SEARCH_RESULT_ERROR: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+    case CLEAR_SEARCH_RESULT: {
+      return {
+        ...state,
+        searchData: action.payload,
       };
     }
 

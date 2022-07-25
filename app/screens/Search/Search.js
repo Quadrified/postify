@@ -1,23 +1,63 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import { Searchbar } from 'react-native-paper';
+import { View, ScrollView } from 'react-native';
+import _ from 'lodash';
+import { Searchbar, ActivityIndicator } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import AppHeader from '../../components/AppHeader';
-import AppColors from '../../themes/AppColors';
 import styles from './styles';
+import AppColors from '../../themes/AppColors';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearSearchResult, fetchSearchData } from '../redux/actions';
+import { getSearchData } from '../redux/selectors';
+import AppHeader from '../../components/AppHeader';
+import SearchResultCard from './components/SearchResultCards';
 
 const Search = ({ navigation, route }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const searchRef = useRef(null);
+  const dispatch = useDispatch();
+
+  const searchData = useSelector(state => getSearchData(state));
+
+  console.log('>>>searchData<<<', searchData);
 
   useEffect(() => {
+    dispatch(clearSearchResult()).catch(error => {
+      setIsLoading(false);
+      console.error('error in searchUser', error);
+    });
     searchRef.current.focus();
-  }, []);
+  }, [dispatch]);
+
+  const searchUser = query => {
+    if (!query.length) {
+      dispatch(clearSearchResult())
+        .then(() => {
+          setIsLoading(false);
+        })
+        .catch(error => {
+          setIsLoading(false);
+          console.error('error in searchUser', error);
+        });
+      return;
+    }
+    dispatch(fetchSearchData(query))
+      .then(data => {
+        console.log('data', data);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('error in onChangeSearch', error);
+        setIsLoading(false);
+      });
+  };
+  const debouncedSearch = _.debounce(searchUser, 3000);
 
   const onChangeSearch = query => {
-    console.log('>>>query<<<', query);
+    setIsLoading(true);
     setSearchQuery(query);
+    debouncedSearch(query);
   };
 
   return (
@@ -39,7 +79,13 @@ const Search = ({ navigation, route }) => {
           />
         </View>
         <View style={styles.searchResultContainer}>
-          <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {isLoading ? (
+              <ActivityIndicator animating size={40} style={styles.loader} />
+            ) : (
+              <SearchResultCard />
+            )}
+          </ScrollView>
         </View>
       </View>
     </>

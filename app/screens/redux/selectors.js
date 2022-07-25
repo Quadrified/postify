@@ -12,3 +12,7 @@ export const getFilteredAuthorName = (state, authorID) => {
   )[0]?.username;
   return authorName;
 };
+
+export const getSearchData = state => {
+  return state.MainReducer.searchData;
+};
