@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Postify</string>
+    <string name="splash">Splash</string>
 </resources>
