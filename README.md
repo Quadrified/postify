@@ -13,9 +13,9 @@
   <img src="./src/assets/screenshots/Home.jpeg" width="200">
   <img src="./src/assets/screenshots/Post.jpeg" width="200">
   <img src="./src/assets/screenshots/Post-Comments.jpeg" width="200">
-  <img src="./src/assets/screenshots/Profile.jpeg" width="200">
   <img src="./src/assets/screenshots/Search-Start.jpeg" width="200">
   <img src="./src/assets/screenshots/Search-Results.jpeg" width="200">
+  <img src="./src/assets/screenshots/Profile.jpeg" width="200">
 </p>
 *** 
 
