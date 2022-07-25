@@ -4,14 +4,20 @@ import UserAvatar from 'react-native-user-avatar';
 import AppColors from '../themes/AppColors';
 import defaultFonts from '../themes/DefaultFonts';
 
-const Avatar = ({ name = '', size, avatarStyle, titleStyle, onPress }) => {
+const Avatar = ({
+  name = 'User',
+  size = 30,
+  avatarStyle,
+  titleStyle,
+  onPress,
+}) => {
   return (
     <TouchableOpacity
       style={styles.authorNameContainer}
       activeOpacity={0.75}
       onPress={onPress}>
       <UserAvatar
-        size={size || 30}
+        size={size}
         borderRadius={100}
         name={name}
         bgColor={AppColors.primary}
@@ -42,9 +48,6 @@ const styles = StyleSheet.create({
     color: AppColors.text,
     left: 5,
     textTransform: 'capitalize',
-  },
-  specialSymbol: {
-    fontSize: 7,
   },
 });
 

@@ -1,5 +1,5 @@
-import { api as API } from '../../../services/Api';
-import Paths from '../../../services/Paths';
+import { api as API } from '../../services/Api';
+import Paths from '../../services/Paths';
 
 export const getPostsController = limit => {
   return new Promise((resolve, reject) => {

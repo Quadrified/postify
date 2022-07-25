@@ -1,13 +1,13 @@
 export const getHomePostData = state => {
-  return state.HomePostsReducer.postData;
+  return state.MainReducer.postData;
 };
 
 export const getCompleteAuthorData = state => {
-  return state.HomePostsReducer?.userData[0];
+  return state.MainReducer?.userData[0];
 };
 
 export const getFilteredAuthorName = (state, authorID) => {
-  const authorName = state.HomePostsReducer?.userData?.filter(
+  const authorName = state.MainReducer?.userData?.filter(
     user => user.id === authorID,
   )[0]?.username;
   return authorName;

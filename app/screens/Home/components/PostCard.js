@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Card, Button } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
-import { getUserData } from '../redux/actions';
+import { getUserData } from '../../redux/actions';
 import Avatar from '../../../components/Avatar';
 import AppColors from '../../../themes/AppColors';
 import DefaultFonts from '../../../themes/DefaultFonts';

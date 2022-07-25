@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { reducer as network } from 'react-native-offline';
-import HomePostsReducer from './screens/Home/redux/reducer';
+import MainReducer from './screens/redux/reducer';
 
 const appReducer = combineReducers({
-  HomePostsReducer,
+  MainReducer,
   network,
 });
 

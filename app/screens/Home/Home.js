@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 import { useSelector, useDispatch } from 'react-redux';
-import { getPostData } from './redux/actions';
-import { getHomePostData } from './redux/selectors';
+import { getPostData } from '../redux/actions';
+import { getHomePostData } from '../redux/selectors';
 import styles from './styles';
 import AppHeader from '../../components/AppHeader';
 import PostCard from './components/PostCard';
@@ -21,8 +21,6 @@ const Home = ({ navigation }) => {
 
   const dispatch = useDispatch();
   const postData = useSelector(state => getHomePostData(state));
-
-  // console.log('>>>postData<<<', postData);
 
   const refreshProps = Platform.select({
     android: {

@@ -3,12 +3,12 @@ import { View, Text, Image, ScrollView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import AppHeader from '../../components/AppHeader';
 import Avatar from '../../components/Avatar';
-import { getUserData } from '../Home/redux/actions';
+import { getUserData } from '../redux/actions';
 import {
   getCompleteAuthorData,
   getFilteredAuthorName,
   getHomePostData,
-} from '../Home/redux/selectors';
+} from '../redux/selectors';
 import styles from './styles';
 
 const Post = ({ navigation, route }) => {

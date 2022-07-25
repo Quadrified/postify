@@ -11,8 +11,8 @@ import {
   openLinkInDefaultBrowser,
   openMap,
 } from '../../utils/externalAppLaunchHelpers';
-import { getUserData } from '../Home/redux/actions';
-import { getCompleteAuthorData } from '../Home/redux/selectors';
+import { getUserData } from '../redux/actions';
+import { getCompleteAuthorData } from '../redux/selectors';
 import InfoBlock from './components/InfoBlock';
 import styles from './styles';
 
